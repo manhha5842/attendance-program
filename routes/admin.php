@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\ClassroomController;
+use App\Http\Controllers\admin\CourseController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\admin\LecturerController;
 use App\Http\Controllers\admin\StudentController;
@@ -69,5 +70,20 @@ Route::group(
         Route::get('/edit/{id}', [StudentController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [StudentController::class, 'update'])->name('update');
         Route::post('/import-csv', [StudentController::class, 'importCsv'])->name('import_csv');
+    }
+);
+Route::group(
+    [
+        'as' => 'courses.',
+        'prefix' => 'courses',
+    ],
+    static function () {
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::get('/create', [CourseController::class, 'create'])->name('create');
+        Route::post('/store', [CourseController::class, 'store'])->name('store');
+        Route::delete('/destroy/{id}', [CourseController::class, 'destroy'])->name('destroy');
+        Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [CourseController::class, 'update'])->name('update');
+        Route::post('/import-csv', [CourseController::class, 'importCsv'])->name('import_csv');
     }
 );

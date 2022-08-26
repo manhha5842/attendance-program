@@ -21,8 +21,8 @@ class StudentImport implements ToArray, SkipsEmptyRows, WithHeadingRow
     {
         foreach ($array as $each) {
             try {
-                $name = $each['ten'];
-                $birthday =  gmdate("Y-m-d", ($each['ngay_sinh'] - 25569) * 86400);
+                $name = $each['ten'];ư
+                // $birthday =  gmdate("Y-m-d", ($each['ngay_sinh'] - 25569) * 86400);
                 if (strcasecmp($each['gioi_tinh'], "nam") == 0) {
                     $gender = 0;
                 } else if (strcasecmp($each['gioi_tinh'], "nữ") == 0 || strcasecmp($each['gioi_tinh'], "nữ") == -108 || strcasecmp($each['gioi_tinh'], "nữ") == 108) {
@@ -36,7 +36,7 @@ class StudentImport implements ToArray, SkipsEmptyRows, WithHeadingRow
                 $address = $each['dia_chi'];
                 $classroom = $each['lop'];
                 $classroom_id = DB::table('classrooms')->Where('name', $classroom)->get();
-                students::updateOrCreate([
+                student::updateOrCreate([
                     'name'  => $name,
                     'email'  => $email,
                     'phone'  => $phone,

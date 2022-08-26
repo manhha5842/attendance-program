@@ -27,7 +27,9 @@ class LecturerImport implements ToArray, WithHeadingRow, SkipsEmptyRows
         foreach ($array as $each) {
             try {
                 $name = $each['ten'];
-                $birthday =  gmdate("Y-m-d", ($each['ngay_sinh'] - 25569) * 86400);
+                $time = strtotime($each['ngay_sinh']);
+                $birthday = date('Y-m-d', $time);
+                // $birthday =  gmdate("Y-m-d", ($each['ngay_sinh'] - 25569) * 86400);
                 if (strcasecmp($each['gioi_tinh'], "nam") == 0) {
                     $gender = 0;
                 } else if (strcasecmp($each['gioi_tinh'], "nữ") == 0 || strcasecmp($each['gioi_tinh'], "nữ") == -108 || strcasecmp($each['gioi_tinh'], "nữ") == 108) {

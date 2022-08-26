@@ -20,8 +20,8 @@ class ClassroomImport implements ToArray, SkipsEmptyRows, WithHeadingRow
     {
         foreach ($array as $each) {
             try {
-                $name = $each['ten'];
-                $lecturer = $each['giang vien'];
+                $name = $each['lop'];
+                $lecturer = $each['giang_vien'];
                 $lecturer_id = DB::table('lecturers')->Where('name', $lecturer)->get();
                 Classroom::updateOrCreate([
                     'name'  => $name,

@@ -25,7 +25,7 @@
     </a>
 </li>
 <li class="side-nav-item">
-    <a href="javascript: void(0);" class="side-nav-link">
+    <a href="{{ route('admin.courses.index') }}" class="side-nav-link">
         <i class="uil-home-alt"></i>
         <span>Quản lí môn học</span>
     </a>

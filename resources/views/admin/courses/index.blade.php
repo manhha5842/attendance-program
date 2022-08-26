@@ -5,19 +5,17 @@
             <div class="card">
                 <div class="card-body">
                     <div style="text-align: end; padding: 1em">
-                        <label for="csv" class="btn btn-info" style="margin: 0">
-                            Import CSV </label>
+                        <label for="csv" class="btn btn-info" style="margin: 0"> Import CSV </label>
                         <input type="file" name="csv" id="csv" class="d-none"
                             accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
                         <button type="button" class="btn btn-primary"
-                            onclick="window.location='{{ route('admin.classrooms.create') }}'">Thêm lớp học</button>
+                            onclick="window.location='{{ route('admin.courses.create') }}'">Thêm</button>
                     </div>
                     <table class="table table-striped table-centered mb-0">
                         <thead>
                             <tr>
-                                <th>Mã lớp</th>
+                                <th>Mã ngành</th>
                                 <th>Tên</th>
-                                <th>Giáo viên phụ trách</th>
                                 <th>Sửa</th>
                                 <th>Xóa</th>
                             </tr>
@@ -27,20 +25,13 @@
                                 <tr>
                                     <td>{{ $each->id }}</td>
                                     <td>{{ $each->name }}</td>
-                                    <td>
-                                        @foreach ($lecturers_data as $lecturer)
-                                            @if ($each->lecturer_id == $lecturer->id)
-                                                {{ $lecturer->name }}
-                                            @endif
-                                        @endforeach
-                                    </td>
                                     <td class="table-action">
-                                        <a href="{{ route('admin.classrooms.edit', ['id' => $each->id]) }}"
+                                        <a href="{{ route('admin.departments.edit', ['id' => $each->id]) }}"
                                             class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                     </td>
                                     <td class="table-action">
                                         <form id="form_delete_<?php echo $each->id; ?>"
-                                            action="{{ route('admin.classrooms.destroy', ['id' => $each->id]) }}"
+                                            action="{{ route('admin.departments.destroy', ['id' => $each->id]) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -75,7 +66,7 @@
                 var formData = new FormData();
                 formData.append('file', $(this)[0].files[0]);
                 $.ajax({
-                    url: '{{ route('admin.classrooms.import_csv') }}',
+                    url: '{{ route('admin.courses.import_csv') }}',
                     type: 'POST',
                     dataType: 'json',
                     enctype: 'multipart/form-data',
