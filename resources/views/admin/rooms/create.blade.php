@@ -4,20 +4,17 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('admin.assignments.update', ['id' => $each->id]) }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.rooms.store') }}" method="POST">
                         @csrf
-                        @method('PUT')
                         <div class="form-group row mb-3">
                             <label for="inputName" class="col-3 col-form-label">Tên</label>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="inputName" placeholder="Tên" name="name"
-                                    value="{{ $each->name }}">
+                                <input type="text" class="form-control" id="inputName" placeholder="Tên" name="name">
                             </div>
                         </div>
-                        <div class="form-group
-                                    mb-0 justify-content-end row">
+                        <div class="form-group mb-0 justify-content-end row">
                             <div class="col-9">
-                                <button type="submit" class="btn btn-info">Sửa</button>
+                                <button type="submit" class="btn btn-info">Thêm</button>
                             </div>
                         </div>
 

@@ -37,11 +37,6 @@ class ClassroomController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $lecturers_data = lecturer::query()->get();

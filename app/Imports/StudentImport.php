@@ -21,7 +21,7 @@ class StudentImport implements ToArray, SkipsEmptyRows, WithHeadingRow
     {
         foreach ($array as $each) {
             try {
-                $name = $each['ten'];ư
+                $name = $each['ten'];
                 // $birthday =  gmdate("Y-m-d", ($each['ngay_sinh'] - 25569) * 86400);
                 if (strcasecmp($each['gioi_tinh'], "nam") == 0) {
                     $gender = 0;

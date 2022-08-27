@@ -37,15 +37,14 @@ class DepartmentController extends Controller
     }
     public function create()
     {
-        return view('admin/departments.create');
+        return view("admin.$this->table.create");
     }
     public function store(StoredepartmentRequest $request)
     {
         $this->model->create([
             'name' => ucfirst($request->name),
         ]);
-
-        // return redirect()->route('admin.departments.index');
+        return redirect()->route('admin.departments.index');
     }
 
     public function show(department $department)

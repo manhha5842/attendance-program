@@ -4,7 +4,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('admin.assignments.update', ['id' => $each->id]) }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.departments.update', ['id' => $each->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group row mb-3">

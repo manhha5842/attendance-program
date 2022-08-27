@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\AssignmentController;
 use App\Http\Controllers\admin\ClassroomController;
 use App\Http\Controllers\admin\CourseController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\admin\LecturerController;
+use App\Http\Controllers\admin\RoomController;
 use App\Http\Controllers\admin\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,5 +87,49 @@ Route::group(
         Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [CourseController::class, 'update'])->name('update');
         Route::post('/import-csv', [CourseController::class, 'importCsv'])->name('import_csv');
+    }
+);
+Route::group(
+    [
+        'as' => 'courses.',
+        'prefix' => 'courses',
+    ],
+    static function () {
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::get('/create', [CourseController::class, 'create'])->name('create');
+        Route::post('/store', [CourseController::class, 'store'])->name('store');
+        Route::delete('/destroy/{id}', [CourseController::class, 'destroy'])->name('destroy');
+        Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [CourseController::class, 'update'])->name('update');
+        Route::post('/import-csv', [CourseController::class, 'importCsv'])->name('import_csv');
+    }
+);
+Route::group(
+    [
+        'as' => 'rooms.',
+        'prefix' => 'rooms',
+    ],
+    static function () {
+        Route::get('/', [RoomController::class, 'index'])->name('index');
+        Route::get('/create', [RoomController::class, 'create'])->name('create');
+        Route::post('/store', [RoomController::class, 'store'])->name('store');
+        Route::delete('/destroy/{id}', [RoomController::class, 'destroy'])->name('destroy');
+        Route::get('/edit/{id}', [RoomController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [RoomController::class, 'update'])->name('update');
+    }
+);
+Route::group(
+    [
+        'as' => 'assignments.',
+        'prefix' => 'assignments',
+    ],
+    static function () {
+        Route::get('/', [AssignmentController::class, 'index'])->name('index');
+        Route::get('/create', [AssignmentController::class, 'create'])->name('create');
+        Route::post('/store', [AssignmentController::class, 'store'])->name('store');
+        Route::delete('/destroy/{id}', [AssignmentController::class, 'destroy'])->name('destroy');
+        Route::get('/edit/{id}', [AssignmentController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [AssignmentController::class, 'update'])->name('update');
+        Route::post('/import-csv', [AssignmentController::class, 'importCsv'])->name('import_csv');
     }
 );

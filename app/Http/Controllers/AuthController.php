@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        return view('auth.login', ['title' => "Đăng nhập"]);
     }
 
     public function processLogin(Request $request)

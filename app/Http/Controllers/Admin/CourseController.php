@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Imports\CourseImport;
 use App\Models\course;
+use App\Models\department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -25,9 +26,10 @@ class CourseController extends Controller
     public function index()
     {
         $data = $this->model->paginate(5);
-
+        $departments_data = department::query()->get();
         return view("admin.$this->table.index", [
             'data' => $data,
+            'departments_data' => $departments_data,
         ]);
     }
 

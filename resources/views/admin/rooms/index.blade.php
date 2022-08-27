@@ -5,47 +5,38 @@
             <div class="card">
                 <div class="card-body">
                     <div style="text-align: end; padding: 1em">
-                        <label for="csv" class="btn btn-info" style="margin: 0"> Import CSV </label>
+                        {{-- <label for="csv" class="btn btn-info" style="margin: 0"> Import CSV </label>
                         <input type="file" name="csv" id="csv" class="d-none"
-                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> --}}
                         <button type="button" class="btn btn-primary"
-                            onclick="window.location='{{ route('admin.courses.create') }}'">Thêm</button>
+                            onclick="window.location='{{ route('admin.rooms.create') }}'">Thêm</button>
                     </div>
                     <table class="table table-striped table-centered mb-0">
                         <thead>
                             <tr>
-                                <th>Môn học</th>
-                                <th>Ngành</th>
+                                <th>Phòng</th>
                                 <th>Sửa</th>
-                                <th>Xóa</th>
+                                {{-- <th>Xóa</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $each)
                                 <tr>
                                     <td>{{ $each->name }}</td>
-                                    <td>
-                                        @foreach ($departments_data as $item)
-                                            @if ($each->department_id == $item->id)
-                                                {{ $item->name }}
-                                            @endif
-                                        @endforeach
-                                    </td>
                                     <td class="table-action">
-                                        <a href="{{ route('admin.courses.edit', ['id' => $each->id]) }}"
-                                            class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                        <a href="{{ route('admin.rooms.edit', ['id' => $each->id]) }}" class="action-icon">
+                                            <i class="mdi mdi-pencil"></i></a>
                                     </td>
-                                    <td class="table-action">
+                                    {{-- <td class="table-action">
                                         <form id="form_delete_<?php echo $each->id; ?>"
-                                            action="{{ route('admin.courses.destroy', ['id' => $each->id]) }}"
-                                            method="POST">
+                                            action="{{ route('admin.rooms.destroy', ['id' => $each->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <a href="javascript:{};" class="action-icon"
                                                 onclick="document.getElementById('form_delete_<?php echo $each->id; ?>').submit();">
                                                 <i class="mdi mdi-delete"></i></a>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
@@ -65,14 +56,14 @@
     @include('admin/sidebar_admin')
 @endsection
 
-@push('js')
+{{-- @push('js')
     <script>
         $(document).ready(function() {
             $("#csv").change(function(e) {
                 var formData = new FormData();
                 formData.append('file', $(this)[0].files[0]);
                 $.ajax({
-                    url: '{{ route('admin.courses.import_csv') }}',
+                    url: '{{ route('admin.rooms.import_csv') }}',
                     type: 'POST',
                     dataType: 'json',
                     enctype: 'multipart/form-data',
@@ -97,4 +88,4 @@
             });
         });
     </script>
-@endpush
+@endpush --}}

@@ -14,7 +14,7 @@
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
-
+    @stack('css')
 </head>
 
 <body class="loading" data-layout="detached"
@@ -82,7 +82,7 @@
     <script src="{{ asset('js/app.min.js') }}"></script>
     <!-- third party js -->
     <script src="{{ asset('js/vendor/Chart.bundle.min.js') }}"></script>
-    <!-- third party js ends --> 
+    <!-- third party js ends -->
     @stack('js')
 </body>
 

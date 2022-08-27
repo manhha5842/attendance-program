@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
-    return view('layout/master');
+    return view('auth.index', ['title' => "Trang chủ"]);
 })->name('welcome');
 
 Route::middleware(['logout'])->group(function () {
