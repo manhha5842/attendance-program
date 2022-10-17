@@ -3,20 +3,36 @@
 namespace App\Models;
 
 
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
-class User extends Model implements AuthenticatableContract
+class User extends Authenticatable implements AuthenticatableContract
 {
-    use Authenticatable;
+    use Notifiable;
     use HasFactory;
     protected $fillable = [
         'email',
-        'name',
-        'avatar',
         'password',
     ];
-    public $timestamps = false;
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+    public function getAuthIdentifierName()
+    {
+        return 'email';
+    }
+
+    public function getAuthIdentifier()
+    {
+        return request()->get('email');
+    }
+
+    public function getAuthPassword()
+    {
+        return Hash::make(request()->get('password'));
+    }
 }

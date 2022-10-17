@@ -28,5 +28,11 @@ class AddColumnBirthdayToLecturersStudentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('lecturers', function (Blueprint $table) {
+            $table->dropColumn('birthday');
+        });
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('birthday');
+        });
     }
 }

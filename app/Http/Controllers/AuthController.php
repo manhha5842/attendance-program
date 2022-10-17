@@ -12,11 +12,12 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login', ['title' => "Đăng nhập"]);
+        return view('auth2.login', ['title' => "Đăng nhập"]);
     }
 
     public function processLogin(Request $request)
     {
+        dd(1);
         try {
             $user = user::query()
                 ->where('email', $request->get('email'))

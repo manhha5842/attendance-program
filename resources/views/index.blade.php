@@ -1,4 +1,4 @@
-@include('auth.header')
+@include('auth2.header')
 
 <body class="authentication-bg pb-0" data-layout-config='{"darkMode":false}'>
 
@@ -60,7 +60,7 @@
                     <!-- end form-->
 
                     <!-- Footer-->
-                    @include('auth.footer')
+                    @include('auth2.footer')
 
                 </div> <!-- end .card-body -->
             </div> <!-- end .align-items-center.d-flex.h-100-->

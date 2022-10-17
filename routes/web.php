@@ -1,16 +1,17 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
-    return view('auth.index', ['title' => "Trang chủ"]);
+    return view('index', ['title' => "Trang chủ"]);
 })->name('welcome');
 
 Route::middleware(['logout'])->group(function () {
-    Route::get('login', [AuthController::class, 'login'])->name('login');
-    Route::post('login', [AuthController::class, 'processLogin'])->name('process_login');
+    // Route::get('login', [AuthController::class, 'login'])->name('login');
+    // Route::post('login', [AuthController::class, 'processLogin'])->name('process_login');
 
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registering'])->name('registering');
@@ -23,3 +24,7 @@ Route::get('/auth/redirect/{provider}', function ($provider) {
 })->name('auth.redirect');
 
 Route::get('/auth/callback/{provider}', [AuthController::class, 'callback'])->name('auth.callback');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

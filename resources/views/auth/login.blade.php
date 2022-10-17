@@ -19,7 +19,7 @@
                             <div class="text-center w-75 m-auto">
                                 <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign In</h4>
                             </div>
-                            <form method="POST" action="{{ route('process_login') }}">
+                            <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="emailaddress">Email address</label>
@@ -43,8 +43,8 @@
 
                                 <div class="form-group mb-3">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin"
-                                            checked>
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin "
+                                            checked name="remember">
                                         <label class="custom-control-label" for="checkbox-signin">Remember me</label>
                                     </div>
                                 </div>
